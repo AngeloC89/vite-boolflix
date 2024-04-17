@@ -21,6 +21,18 @@
       };
     },
     methods: {
+      getSearch() {
+        if(this.store.searchFilter){
+          this.store.options.params.query = this.store.searchFilter;
+        }else{
+          this.store.options.params.query = "";
+        }
+        this.getMovies();
+        this.getSeries();
+      
+          
+          console.log(this.store.options.params.query);
+        },
       getMovies() {
         axios.get(this.store.apiUrl + this.store.endPoint.movie, this.store.options)
           .then((res) => {
@@ -42,18 +54,7 @@
             console.log(error);
           });
       },
-      getSearch() {
-        if(this.store.searchFilter){
-          this.store.options.params.query = this.store.searchFilter;
-        }else{
-          this.store.options.params.query = "";
-        }
-        this.getMovies();
-        this.getSeries();
-      
-          
-          console.log(this.store.options.params.query);
-        }
+    
 
 
   
