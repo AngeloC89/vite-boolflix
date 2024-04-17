@@ -1,12 +1,20 @@
 <template>
+  <HeadetComponent />
+  <MainComponent />
 </template>
 
 <script>
 import axios from 'axios';
 import { store } from './store';
+import HeadetComponent from './components/HeaderComponent.vue';
+import MainComponent from './components/MainComponent.vue';
 
 export default {
 name: 'App',
+components: {
+  HeadetComponent,
+  MainComponent,
+},
 data() {
   return {
     store,
@@ -16,6 +24,8 @@ methods: {
   getMovies() {
     axios.get(this.store.apiUrl + this.store.endPoint.movie, this.store.options)
       .then((res) => {
+
+
         console.log(res.data.results);
       })
       .catch((error) => {
