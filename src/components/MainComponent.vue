@@ -2,6 +2,7 @@
     <main >
 
         <CardList />
+    
 
     </main>
 </template>

@@ -17,3 +17,6 @@ export const store = reactive({
   series: [],
   imgUrl: "https://image.tmdb.org/t/p/w342",
 });
+
+
+//:image="store.imgUrl + movie.poster_path" serve per stampare le immagini.
