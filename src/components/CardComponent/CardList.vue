@@ -5,7 +5,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-6 col-lg-3" v-for="movie in store.movies">
-                <CardComponent :title="movie.title" :originalTitle="movie.original_title" :language="movie.original_language" :vote="movie.vote_average"/>
+                <CardComponent :image="store.imgUrl + movie.poster_path" :title="movie.title" :originalTitle="movie.original_title" :language="movie.original_language" :vote="movie.vote_average"/>
             </div>
         </div>
     </div>
@@ -15,7 +15,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-6 col-lg-3" v-for="movie in store.series">
-                <CardComponent :image="store.imgUrl + movie.poster_path" />
+                <CardComponent :image="store.imgUrl + movie.poster_path" :title="movie.title" :originalTitle="movie.original_title" :language="movie.original_language" :vote="movie.vote_average" />
             </div>
         </div>
     </div>
@@ -43,5 +43,10 @@ h2{
     color: red;
     font-size: 4em;
     text-shadow: 10px 4px 10px black;
+}
+
+CardComponent{
+    min-height: 470px;
+    margin-bottom: 200px;
 }
 </style>
