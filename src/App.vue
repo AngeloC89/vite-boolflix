@@ -1,5 +1,5 @@
 <template>
-  <HeadetComponent />
+  <HeadetComponent @searchTitle="getSearch"/>
   <MainComponent />
 </template>
 
@@ -42,14 +42,28 @@
             console.log(error);
           });
       },
+      getSearch() {
+        if(this.store.searchFilter){
+          this.store.options.params.query = this.store.searchFilter;
+        }else{
+          this.store.options.params.query = "";
+        }
+        this.getMovies();
+        this.getSeries();
+      
+          
+          console.log(this.store.options.params.query);
+        }
+
+
+  
 
 
 
 
     },
     created() {
-      this.getMovies();
-      this.getSeries();
+
     },
   };
 </script>

@@ -24,6 +24,8 @@
     main {
         background-color: $backgroundcolor;
       padding: 30px;
+      height: 100vh;
+      overflow-y: auto;
     }
 
 </style>
