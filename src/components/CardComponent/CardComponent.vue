@@ -5,26 +5,30 @@
             <div id="card-front">
                 <img id="img" class="img-fluid" :src="image" :alt="title">
             </div>
-
-
             <div id="card-back">
                 <div id="card" class="h-100 d-flex flex-column justify-content-center">
 
-                    <h5>
+                    <h5>Titolo:</h5>
+                    <h4>
                         {{ title }}
-                    </h5>
-                    <h6>
+                    </h4>
+                    <h5>Titolo Originale:</h5>
+
+                    <h4>
                         {{ originalTitle }}
-                    </h6>
-                    <p v-if="!img">
-                        <img class="img-fluid w-25" :src="`/images/flag/${language}.png`" alt="">
+                    </h4>
+                    <h5>Lingua Originale:</h5>
+                    <p>
+                        <img class="img-fluid w-25" :src="`/images/flag/${language}.png`" :alt="language">
                     </p>
-                    <p v-else>
-                        <span>{{ language }}</span>
-                    </p>
+                    <h5>Punteggio:</h5>
                     <p>
                         {{ vote }}
                     </p>
+                    <div class="stars">
+                        <i v-for="n in 5"
+                            :class="{ 'fa-solid': n <= pointStars, 'fa-regular': n > pointStars }" class="fa-star"></i>
+                    </div>
 
                 </div>
             </div>
@@ -37,6 +41,7 @@
 </template>
 
 <script>
+
     export default {
         name: 'CardComponent',
         props: [
@@ -46,15 +51,22 @@
             'language',
             'vote',
 
-        ]
-    }
+        ],
+
+        computed: {
+            pointStars() {
+                return Math.ceil(`${this.vote}` / 2);
+            }
+        }
+    };
 </script>
 
 
 <style lang="scss" scoped>
 
-
-
+    .stars {
+        color: gold;
+    }
 
     .flip-card {
         background-color: transparent;
