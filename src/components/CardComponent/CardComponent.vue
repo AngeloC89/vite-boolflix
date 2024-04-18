@@ -26,8 +26,8 @@
                         {{ vote }}
                     </p>
                     <div class="stars">
-                        <i v-for="n in 5"
-                            :class="{ 'fa-solid': n <= pointStars, 'fa-regular': n > pointStars }" class="fa-star"></i>
+                        <i v-for="n in 5" :class="{ 'fa-solid': n <= pointStars, 'fa-regular': n > pointStars }"
+                            class="fa-star"></i>
                     </div>
 
                 </div>
@@ -52,11 +52,15 @@
             'vote',
 
         ],
+        methods: {
+
+        },
 
         computed: {
             pointStars() {
                 return Math.ceil(`${this.vote}` / 2);
-            }
+            },
+
         }
     };
 </script>
@@ -71,7 +75,7 @@
     .flip-card {
         background-color: transparent;
         min-width: 300px;
-        min-height: 470px;
+        aspect-ratio: 1 / 1.5;
         perspective: 1000px;
         margin: 10px 0px;
 

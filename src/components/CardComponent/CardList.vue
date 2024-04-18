@@ -5,7 +5,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-6 col-lg-3" v-for="movie in store.movies">
-                <CardComponent :image="store.imgUrl + movie.poster_path" :title="movie.title" :originalTitle="movie.original_title" :language="movie.original_language" :vote="movie.vote_average"/>
+                <CardComponent :image="movie.poster_path ? this.store.imgUrl + movie.poster_path : this.store.imageNotFound" :title="movie.title" :originalTitle="movie.original_title" :language="movie.original_language" :vote="movie.vote_average"/>
             </div>
         </div>
     </div>
@@ -15,7 +15,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-6 col-lg-3" v-for="movie in store.series">
-                <CardComponent :image="store.imgUrl + movie.poster_path" :title="movie.name" :originalTitle="movie.original_name" :language="movie.original_language" :vote="movie.vote_average" />
+                <CardComponent :image="movie.poster_path ? this.store.imgUrl + movie.poster_path : this.store.imageNotFound" :title="movie.name" :originalTitle="movie.original_name" :language="movie.original_language" :vote="movie.vote_average" />
             </div>
         </div>
     </div>
@@ -33,7 +33,7 @@
             return {
                 store,
             };
-        }
+        },
     }
 </script>
 
