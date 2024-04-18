@@ -15,7 +15,8 @@ export const store = reactive({
   searchFilter: "",
   movies: [],
   series: [],
-  imgUrl: "https://image.tmdb.org/t/p/w342",
+  imgUrl: "https://image.tmdb.org/t/p/w500",
+  imageNotFound: "/images/image-not-found.jpg",
 });
 
 

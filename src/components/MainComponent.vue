@@ -1,8 +1,8 @@
 <template>
-    <main >
+    <main>
 
         <CardList />
-    
+
 
     </main>
 </template>
@@ -24,9 +24,16 @@
 
     main {
         background-color: $backgroundcolor;
-      padding: 30px;
-      height: 100vh;
-      overflow-y: auto;
+        background-image: url(../images/BBBB.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        background-size: 15%;
+        min-height: 100vh;
+        padding: 30px;
+        height: 100vh;
+        overflow-y: auto;
+
     }
 
 </style>
