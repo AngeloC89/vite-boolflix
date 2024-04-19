@@ -1,5 +1,5 @@
 <template>
-    <header class="bg-black">
+    <header class="bg-black ">
         <nav class="navbar navbar-light bg-light justify-content-between bg-black" >
             <div id="logo">
                 <img class="img-fluid" src="/images/BoolFlix.png" alt="Logo BoolFlix">
@@ -29,6 +29,13 @@ import { store } from '../store';
 </script>
 
 <style lang="scss" scoped>
+header{
+    position: fixed;
+    z-index: 3000;
+    height: 100px;
+    width: 100%;
+}
+
 #logo{
     width: 300px;
 }

@@ -1,20 +1,25 @@
 <template>
     <main>
-
-        <CardList />
-
-
+             <CardList :list="store.movies" :title="'Movies'"/>
+             <CardList :list="store.series" :title="'Series'"/>
+             <CardList :list="store.popular" :title="'Popular'"/>
     </main>
 </template>
 
 <script>
     import CardList from './CardComponent/CardList.vue';
+    import {store} from '../store';
 
     export default {
         name: 'MainComponent',
         components: {
             CardList
+        },
+        data(){
+            return{
+            store,
         }
+    },
 
     }
 </script>
@@ -27,13 +32,18 @@
         background-image: url(../images/BBBB.png);
         background-repeat: no-repeat;
         background-position: center;
+        background-position-y: 300px;
         background-attachment: fixed;
         background-size: 15%;
-        min-height: 100vh;
-        padding: 30px;
-        height: 100vh;
+        padding: 20px;
+        height: 100vh;     
+        width: 100%;
+        padding-top: 150px; 
         overflow-y: auto;
+        
 
     }
+
+    
 
 </style>

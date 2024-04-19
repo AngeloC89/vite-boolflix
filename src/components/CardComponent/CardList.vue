@@ -1,54 +1,92 @@
-<template>
-    <div id="movieId" class="container p-0">
-        <div v-if="store.series.length > 0">
-            <h2>Film</h2>
-        </div>
-        <div class="row">
-            <div class="col-12 col-md-6 col-lg-3" v-for="movie in store.movies">
-                <CardComponent :image="movie.poster_path ? this.store.imgUrl + movie.poster_path : this.store.imageNotFound" :title="movie.title" :originalTitle="movie.original_title" :language="movie.original_language" :vote="movie.vote_average"/>
+<template>     <!--***************************** Popolari *******************************+-->
+    <div v-if="list.length > 0">
+        <h2>{{ title }}</h2>
+
+        <div class="d-flex justify-content-between align-items-center">
+            <div id="left" @click="goLeft" class="btn btn-outline-secondary rounded-circle">
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div id="seriesId" class="d-flex p-4">
+                <div class="mx-2" v-for="(movie) in list">
+                    <CardComponent :key="movie.id" :item="movie" 
+                          
+                       />
+                </div>
+            </div>
+            <div id="right" class="btn btn-outline-secondary rounded-circle">
+                <i class="fa-solid fa-chevron-right"></i>
             </div>
         </div>
     </div>
-    <div id="seriesId" class="container p-0">
-        <div v-if="store.series.length > 0">
-            <h2>{Series}</h2>
-        </div>
-        <div class="row">
-            <div class="col-12 col-md-6 col-lg-3" v-for="movie in store.series">
-                <CardComponent :image="movie.poster_path ? this.store.imgUrl + movie.poster_path : this.store.imageNotFound" :title="movie.name" :originalTitle="movie.original_name" :language="movie.original_language" :vote="movie.vote_average" />
-            </div>
-        </div>
-    </div>
+
 </template>
 
 <script>
-    import { store } from '../../store';
-    import CardComponent from './CardComponent.vue';
+    import { store } from "../../store";
+    import CardComponent from "./CardComponent.vue";
     export default {
-        name: 'CardList',
+        name: "CardList",
         components: {
-            CardComponent
+            CardComponent,
         },
-        data() {
-            return {
-                store,
-            };
+        props: {
+           
+            title: String,
+            list:Array,
+           
         },
-    }
+    
+
+       }
+
+
+ 
+
 </script>
 
-
 <style lang="scss" scoped>
-h2{
-    color: red;
-    font-size: 4em;
-    text-shadow: 10px 4px 10px black;
-}
 
-#movieId, #seriesId{
-    margin-bottom: 100px;
-}
+    h2 {
+        color: red;
+        font-size: 4em;
+        text-shadow: 10px 4px 10px black;
+    }
+
+    #movieId,
+    #seriesId {
+        overflow-y: hidden;
+        overflow-x: auto;
+        cursor: pointer;
+        
 
 
+    }
 
+    #movieId::-webkit-scrollbar,
+    #seriesId::-webkit-scrollbar {
+        display: none;
+    }
+
+    #right,
+    #left {
+        height: 100px;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: 4rem;
+        position: absolute;
+        z-index: 10;
+    }
+
+    #right {
+        right: 0;
+
+
+    }
+
+    #left {
+        left: 0;
+    }
 </style>

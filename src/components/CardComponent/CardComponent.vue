@@ -3,27 +3,29 @@
         <div class="flip-card-inner">
 
             <div id="card-front">
-                <img id="img" class="img-fluid" :src="image" :alt="title">
+                <img id="img" class="img-fluid" :src="item.poster_path
+                ? this.store.imgUrl + item.poster_path
+                : this.store.imageNotFound" :alt="item.title">
             </div>
             <div id="card-back">
                 <div id="card" class="h-100 d-flex flex-column justify-content-center">
 
                     <h5>Titolo:</h5>
                     <h4>
-                        {{ title }}
+                        {{ item.name || item.title }}
                     </h4>
                     <h5>Titolo Originale:</h5>
 
                     <h4>
-                        {{ originalTitle }}
+                        {{ item.original_name || item.original_title }}
                     </h4>
                     <h5>Lingua Originale:</h5>
                     <p>
-                        <img class="img-fluid w-25" :src="`/images/flag/${language}.png`" :alt="language">
+                        <img class="img-fluid w-25" :src="`/images/flag/${item.original_language}.png`" :alt="item.original_language">
                     </p>
                     <h5>Punteggio:</h5>
                     <p>
-                        {{ vote }}
+                        {{ item.vote_average }}
                     </p>
                     <div class="stars">
                         <i v-for="n in 5" :class="{ 'fa-solid': n <= pointStars, 'fa-regular': n > pointStars }"
@@ -41,27 +43,29 @@
 </template>
 
 <script>
+import { store } from '../../store';
 
     export default {
         name: 'CardComponent',
-        props: [
-            'image',
-            'title',
-            'originalTitle',
-            'language',
-            'vote',
+        props: {
+            item: Object,
 
-        ],
+        },
         methods: {
 
         },
 
         computed: {
             pointStars() {
-                return Math.ceil(`${this.vote}` / 2);
+                return Math.ceil(`${this.item.vote}` / 2);
             },
 
-        }
+        },
+        data() {
+            return {
+                store
+            }
+        },
     };
 </script>
 
@@ -74,12 +78,20 @@
 
     .flip-card {
         background-color: transparent;
-        min-width: 300px;
+        width: 150px;
         aspect-ratio: 1 / 1.5;
         perspective: 1000px;
         margin: 10px 0px;
+        transition: 0.5s transforms;
 
 
+
+    }
+
+    .flip-card:hover .flip-card-inner {
+        transform: translate(0px, -30px);
+        position: relative;
+        z-index: 100;
     }
 
     .flip-card-inner {
@@ -90,10 +102,15 @@
         transition: transform 0.6s;
         transform-style: preserve-3d;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        opacity: 0.8;
+
+
+
     }
 
     .flip-card:hover .flip-card-inner {
-        transform: rotateY(180deg);
+        //transform: rotateY(180deg);
+        opacity: 1;
     }
 
 
@@ -101,7 +118,7 @@
         background-color: black;
         color: white;
         transform: rotateY(180deg);
-        min-height: 470px;
+
     }
 
     #card-front,
@@ -115,7 +132,7 @@
     }
 
     #img {
-        min-height: 470px;
+        height: 100%;
 
     }
 

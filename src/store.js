@@ -5,6 +5,8 @@ export const store = reactive({
   endPoint: {
     movie: "search/movie",
     series: "search/tv",
+    popular: 'movie/popular',
+    popularTv: 'tv/popular'
   },
   options: {
     params: {
@@ -15,8 +17,12 @@ export const store = reactive({
   searchFilter: "",
   movies: [],
   series: [],
+  popular: [],
   imgUrl: "https://image.tmdb.org/t/p/w500",
   imageNotFound: "/images/image-not-found.jpg",
+  activeIndexSlides: 0,
+  activeArray: null,
+
 });
 
 
