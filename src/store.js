@@ -21,8 +21,12 @@ export const store = reactive({
   popularTV: [],
   imgUrl: "https://image.tmdb.org/t/p/w500",
   imageNotFound: "/images/image-not-found.jpg",
-  activeIndexSlides: 0,
+  activeId: null,
   activeArray: null,
+  
+
+  //variablili flag
+  openModalChange: false,
 
 });
 

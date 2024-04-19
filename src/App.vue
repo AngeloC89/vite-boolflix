@@ -4,9 +4,9 @@
   
     <MainComponent class="position-absolute" />
     
-    <div id="modul">
+    <div id="modul" :class="{'d-none' : !this.store.openModalChange}" >
       <div id="info">
-        <button id="close" class="btn btn-outline-light rounded-circle ">X</button>
+        <button id="close" class="btn btn-outline-light rounded-circle "  @click="this.store.openModalChange = !this.store.openModalChange">x</button>
       </div>
     </div>
   </div>
@@ -28,6 +28,7 @@
       MainComponent,
    
     },
+  
     data() {
       return {
         store,
@@ -102,13 +103,14 @@
   #modul {
     height: 100%;
     width: 100%;
-    background-color: rgba(128, 128, 128, 0.706);
+    background-color: rgba(33, 33, 33, 0.587);
     position: fixed;
     z-index: 3001;
     display: flex;
     justify-content: center;
     align-items: center;
-    display: none;
+  
+    
 
     #info{
       height: 900px;
@@ -118,11 +120,16 @@
       display: flex;
       justify-content: flex-end;
       padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 20px 0px red;
      
 
       #close{
-        height: 50px;
-        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        width: 30px;
 
       }
     }

@@ -1,5 +1,5 @@
 <template>
-    <div class="flip-card">
+    <div class="flip-card" @click="this.store.openModalChange = !this.store.openModalChange, console.log(this.store.openModalChange)">
         <div class="flip-card-inner">
 
             <div id="card-front">
@@ -38,6 +38,8 @@
 
         </div>
     </div>
+
+    
 
 
 </template>
@@ -83,9 +85,6 @@ import { store } from '../../store';
         perspective: 1000px;
         margin: 10px 0px;
         transition: 0.5s transforms;
-
-
-
     }
 
     .flip-card:hover .flip-card-inner {
