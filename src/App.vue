@@ -76,11 +76,22 @@
           .catch((error) => {
             console.log(error);
           });
+      },
+      getPopularTV(){
+        axios.get(this.store.apiUrl + this.store.endPoint.popularTv, this.store.options)
+          .then((res) => {
+            this.store.popularTV = res.data.results;
+            console.log(res.data.results);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
 
     },
     created() {
-     
+
+      this.getPopularTV();
       this.getPopular();
 
     },

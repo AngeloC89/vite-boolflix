@@ -1,20 +1,22 @@
-<template>     <!--***************************** Popolari *******************************+-->
+<template>
+
     <div v-if="list.length > 0">
         <h2>{{ title }}</h2>
 
-        <div class="d-flex justify-content-between align-items-center">
-            <div id="left" @click="goLeft" class="btn btn-outline-secondary rounded-circle">
+        <div class="d-flex justify-content-between align-items-center" >
+            <!-- button left -->
+            <div id="left" @click="goft(-1000)" class="btn btn-outline-danger">
                 <i class="fa-solid fa-chevron-left"></i>
             </div>
-            <div id="seriesId" class="d-flex p-4">
+
+            <div id="itemId" class="d-flex p-4" ref="item">
                 <div class="mx-2" v-for="(movie) in list">
-                    <CardComponent :key="movie.id" :item="movie" 
-                          
-                       />
+                    <CardComponent :key="movie.id" :item="movie" />
                 </div>
             </div>
-            <div id="right" class="btn btn-outline-secondary rounded-circle">
-                <i class="fa-solid fa-chevron-right"></i>
+            <!-- button right -->
+            <div id="right" class="btn btn-outline-danger ">
+                <i class="fa-solid fa-chevron-right" @click="goft(1000)"></i>
             </div>
         </div>
     </div>
@@ -30,17 +32,24 @@
             CardComponent,
         },
         props: {
-           
             title: String,
-            list:Array,
-           
+            list: Array,
         },
-    
+        methods: {
+            goft(coso) {
+               
+                this.$refs.item.scrollBy({
+                    left: coso,
+                    behavior: "smooth",
+                });
 
-       }
+            },
+          
+        },
+    }
 
 
- 
+
 
 </script>
 
@@ -52,25 +61,25 @@
         text-shadow: 10px 4px 10px black;
     }
 
-    #movieId,
-    #seriesId {
+
+    #itemId {
         overflow-y: hidden;
         overflow-x: auto;
         cursor: pointer;
-        
+
 
 
     }
 
-    #movieId::-webkit-scrollbar,
-    #seriesId::-webkit-scrollbar {
+
+    #itemId::-webkit-scrollbar {
         display: none;
     }
 
     #right,
     #left {
-        height: 100px;
-        aspect-ratio: 1 / 1;
+        height: 230px;
+        width: 50px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -78,6 +87,7 @@
         font-size: 4rem;
         position: absolute;
         z-index: 10;
+
     }
 
     #right {

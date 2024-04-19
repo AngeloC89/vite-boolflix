@@ -3,6 +3,7 @@
              <CardList :list="store.movies" :title="'Movies'"/>
              <CardList :list="store.series" :title="'Series'"/>
              <CardList :list="store.popular" :title="'Popular'"/>
+             <CardList :list="store.popularTV" :title="'Popular Series'"/>
     </main>
 </template>
 

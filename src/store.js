@@ -18,6 +18,7 @@ export const store = reactive({
   movies: [],
   series: [],
   popular: [],
+  popularTV: [],
   imgUrl: "https://image.tmdb.org/t/p/w500",
   imageNotFound: "/images/image-not-found.jpg",
   activeIndexSlides: 0,
