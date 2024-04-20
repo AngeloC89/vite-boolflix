@@ -4,7 +4,7 @@
 
     <MainComponent class="position-absolute" />
 
-    <div id="modul" :class="{ 'd-none': !this.store.openModalChange }">
+    <div id="modal" :class="{ 'd-none': !this.store.openModalChange }">
       <div id="info">
         <div id="close">
           <button id="closed" class="btn btn-outline-danger rounded-circle"
@@ -21,7 +21,7 @@
               : this.store.imageNotFound16_9" :alt="this.store.activeArray.title">
 
           </div>
-          <div id="card" class="d-flex flex-column">
+          <div id="card" class="d-flex flex-column p-2 ">
             <h5>Titolo:</h5>
             <h4>{{ this.store.activeArray.title || this.store.activeArray.name }}</h4>
             <br> <!--********** space **********-->
@@ -141,20 +141,33 @@
 </script>
 
 <style lang="scss" scoped>
-#imgs{
-  margin-bottom: 30px;
+  #imgs {
+    margin-bottom: 30px;
+    position: relative;
 
-  img{
-    border-radius: 10px;
-    
+  
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      content: "";
+      display: block;
+      height: 100%;
    
+      background: linear-gradient(to bottom, rgba(255,255,255,0) 53%, rgba(0,0,0,1) 100%, rgba(0,0,0,1) 100%);
+      box-shadow: inset 0px 0px 150px 0px black;
+
+      
+    }
   }
-}
+
   .stars {
     color: gold;
   }
 
-  #modul {
+  #modal {
     height: 100%;
     width: 100%;
     background-color: rgba(33, 33, 33, 0.587);
@@ -163,6 +176,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
+
+    
 
     #info {
       height: 900px;
@@ -170,9 +186,9 @@
       background-color: black;
       color: white;
       border-radius: 10px;
-      box-shadow: 0px 0px 20px 0px red;
       position: relative;
-      
+      animation: modal-comparsa 0.5s ease-in-out forwards; 
+
 
 
 
@@ -184,6 +200,7 @@
         position: absolute;
         right: 10px;
         top: 10px;
+        z-index: 2000;
 
         #closed {
           display: flex;
@@ -198,15 +215,12 @@
       #cardInfo {
         height: 100%;
         width: 100%;
-        padding: 10px;
-
-
-
-
-        #card {
+       
+       #card {
           overflow: hidden;
           overflow-y: scroll;
           height: 53%;
+         
 
           #flag {
             height: 40px;
@@ -220,6 +234,17 @@
           }
         }
       }
+    }
+  }
+
+  @keyframes modal-comparsa {
+    from {
+      opacity: 0;
+      transform: scale(0.5); /* Riduce il modale all'inizio dell'animazione */
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
     }
   }
 </style>
