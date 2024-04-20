@@ -3,9 +3,9 @@
     <div v-if="list.length > 0">
         <h2>{{ title }}</h2>
 
-        <div class="d-flex justify-content-between align-items-center" >
+        <div class="d-flex justify-content-between align-items-center">
             <!-- button left -->
-            <div id="left" @click="goft(-1000)" class="btn btn-outline-danger">
+            <div id="left" @click="goScroll(-1000)" class="btn btn-outline-danger">
                 <i class="fa-solid fa-chevron-left"></i>
             </div>
 
@@ -16,7 +16,7 @@
             </div>
             <!-- button right -->
             <div id="right" class="btn btn-outline-danger ">
-                <i class="fa-solid fa-chevron-right" @click="goft(1000)"></i>
+                <i class="fa-solid fa-chevron-right" @click="goScroll(1000)"></i>
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-    import { store } from "../../store";
+
     import CardComponent from "./CardComponent.vue";
     export default {
         name: "CardList",
@@ -36,15 +36,15 @@
             list: Array,
         },
         methods: {
-            goft(coso) {
-               
+            goScroll(px) {
+
                 this.$refs.item.scrollBy({
-                    left: coso,
+                    left: px,
                     behavior: "smooth",
                 });
-
             },
-          
+            
+
         },
     }
 
@@ -65,7 +65,7 @@
     #itemId {
         overflow-y: hidden;
         overflow-x: auto;
-        cursor: pointer;
+        
 
 
 

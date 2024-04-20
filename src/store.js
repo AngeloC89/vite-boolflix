@@ -21,8 +21,10 @@ export const store = reactive({
   popularTV: [],
   imgUrl: "https://image.tmdb.org/t/p/w500",
   imageNotFound: "/images/image-not-found.jpg",
+  imageNotFound16_9: "/images/image-not-found-16-9.jpg",
   activeId: null,
-  activeArray: null,
+  activeArray: 'popular',
+
   
 
   //variablili flag
