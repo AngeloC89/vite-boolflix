@@ -5,7 +5,7 @@
                 <img class="img-fluid" src="/images/BoolFlix.png" alt="Logo BoolFlix">
             </div>    
             <div class="d-flex">     
-                <input class="form-control mr-sm-2" type="text" placeholder="Cerca un titolo..." aria-label="Search" @keyup.enter="$emit('searchTitle')" v-model.trim="store.searchFilter">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search a title..." aria-label="Search" @keyup.enter="$emit('searchTitle')" v-model.trim="store.searchFilter">
                 <button class="btn btn-outline-danger me-2 my-2 my-sm-0" @click="$emit('searchTitle')"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
         </nav>

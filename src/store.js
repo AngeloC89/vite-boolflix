@@ -17,18 +17,20 @@ export const store = reactive({
   searchFilter: "",
   movies: [],
   series: [],
-  popular: [],
-  popularTV: [],
-  imgUrl: "https://image.tmdb.org/t/p/w500",
-  imageNotFound: "/images/image-not-found.jpg",
+  popular: [],//popular
+  popularTV: [],//popular series
+  imgUrl: "https://image.tmdb.org/t/p/w500",//image base url
+  imageNotFound: "/images/image-not-found.jpg",// sostitutive image for card
   imageNotFound16_9: "/images/image-not-found-16-9.jpg",
   activeId: null,
   activeArray: 'popular',
 
+
   
 
-  //variablili flag
+  //variable flag
   openModalChange: false,
+  activeSplash: true,
 
 });
 
