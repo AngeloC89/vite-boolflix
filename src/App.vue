@@ -66,7 +66,7 @@
            this.getPopularTV(),
          ]).then((res) => {
            this.store.popular = res[0].data.results;
-           this.store.popularTV = res[0].data.results;
+           this.store.popularTV = res[1].data.results;
          }).catch((error) => {
            console.log(error);
          }).finally(() => {

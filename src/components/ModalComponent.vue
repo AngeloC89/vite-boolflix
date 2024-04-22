@@ -92,7 +92,7 @@
 
         #info {
             height: 600px;
-            width: 80%;
+            width: 1200px;
             background-color: black;
             color: white;
             position: relative;
@@ -134,7 +134,6 @@
                 //image of the modal
                 #big-div-image {
                     height: 100%;
-                    width: 80%;
                     position: absolute;
                     right: 0;
 
@@ -196,6 +195,74 @@
         to {
             opacity: 1;
             transform: scale(1);
+        }
+    }
+
+    @media screen and (max-width: 992px) {
+        #modal {
+            overflow-y: auto ;
+            #info {
+                height: 800px;
+                width: 500px;
+                background-color: black;
+                color: white;
+                overflow: hidden;
+                position: relative;
+                top: 50px;
+                animation: modal-comparsa 0.5s ease-in-out forwards;
+
+                #cardInfo {
+
+                    //image of the modal
+                    #big-div-image {
+                        height: 40%;
+                       
+
+                        #imgs {
+                            position: relative;
+                            height: 100%;
+                            width: 100%;
+                            box-shadow: 0px 0px 18px 40px rgb(0, 0, 0);
+                            z-index: 300;
+
+                            &::after {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                content: "";
+                                display: block;
+                                height: 100%;
+                                background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 53%, rgba(0, 0, 0, 1) 100%, rgba(0, 0, 0, 1) 100%);
+                                box-shadow: inset 0px 0px 100px 10px black;
+                            }
+                        }
+                    }
+
+                    #card {
+
+                       
+                        overflow-y: scroll;
+                        height: 400px;
+                        width: 500px;
+                        position: absolute;
+                        top: 43%;
+
+                        &::-webkit-scrollbar {
+                            display: none;
+                        }
+
+                        #flag {
+                            height: 40px;
+                        }
+
+                        #overview {
+                            height: 100%;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
         }
     }
 
