@@ -243,7 +243,7 @@
 
                        
                         overflow-y: scroll;
-                        height: 400px;
+                        height: 450px;
                         width: 500px;
                         position: absolute;
                         top: 43%;
