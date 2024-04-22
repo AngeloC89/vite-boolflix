@@ -1,5 +1,5 @@
 <template>
-    <div class="flip-card" @click="this.store.openModalChange = !this.store.openModalChange, currentArray(), console.log(this.store.activeArray)">
+    <div class="flip-card" @click="this.store.openModalChange = !this.store.openModalChange, currentArray()">
         <div class="flip-card-inner">
 
             <div id="card-front">

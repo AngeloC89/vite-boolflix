@@ -4,6 +4,7 @@
   </div>
 
   <div v-if="!store.activeSplash">
+    <LoaderComponent v-if="store.loader" class="loader" />
 
     <HeadetComponent class="position-absolute" @searchTitle="getSearch" />
 
@@ -19,6 +20,7 @@
   import HeadetComponent from "./components/HeaderComponent.vue";
   import MainComponent from "./components/MainComponent.vue";
   import ModalComponent from "./components/ModalComponent.vue";
+  import LoaderComponent from "./components/LoaderComponent.vue";
 
   export default {
     name: "App",
@@ -26,6 +28,7 @@
       HeadetComponent,
       MainComponent,
       ModalComponent,
+      LoaderComponent,
     },
 
     data() {
@@ -35,67 +38,61 @@
     },
     methods: {
       getSearch() {
+        this.store.cardList = false,
+        this.store.loader = true;
         if (this.store.searchFilter) {
           this.store.options.params.query = this.store.searchFilter;
         } else {
           this.store.options.params.query = "";
         }
-        this.getMovies();
-        this.getSeries();
+        Promise.all([this.getMovies(), this.getSeries(), this.getPopular(), this.getPopularTV(),]).then((res) => {
+          this.store.movies = res[0].data.results;
+          this.store.series = res[1].data.results;
+          this.store.popular = res[2].data.results;
+          this.store.popularTV = res[3].data.results;
 
-        console.log(this.store.options.params.query);
+        }).catch((error) => {
+          console.log(error);
+        }).finally(() => {
+          this.store.cardList = true;
+          this.store.loader = false;
+        });
       },
-      getMovies() {
-        axios
-          .get(this.store.apiUrl + this.store.endPoint.movie, this.store.options)
-          .then((res) => {
-            this.store.movies = res.data.results;
 
-            console.log(res.data.results);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+       getInitial() {
+         this.store.loader = true;
+         Promise.all([
+           this.getPopular(),
+           this.getPopularTV(),
+         ]).then((res) => {
+           this.store.popular = res[0].data.results;
+           this.store.popularTV = res[0].data.results;
+         }).catch((error) => {
+           console.log(error);
+         }).finally(() => {
+           this.store.loader = false;
+         });
+       },
+//function for calling axios
+      getMovies() {
+        return axios.get(this.store.apiUrl + this.store.endPoint.movie, this.store.options)
       },
       getSeries() {
-        axios
-          .get(this.store.apiUrl + this.store.endPoint.series, this.store.options)
-          .then((res) => {
-            this.store.series = res.data.results;
-            console.log(res.data.results);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        return axios.get(this.store.apiUrl + this.store.endPoint.series, this.store.options)
       },
       getPopular() {
-        axios
-          .get(this.store.apiUrl + this.store.endPoint.popular, this.store.options)
-          .then((res) => {
-            this.store.popular = res.data.results;
-            console.log(res.data.results);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        return axios.get(this.store.apiUrl + this.store.endPoint.popular, this.store.options)
       },
       getPopularTV() {
-        axios
-          .get(this.store.apiUrl + this.store.endPoint.popularTv, this.store.options)
-          .then((res) => {
-            this.store.popularTV = res.data.results;
-            console.log(res.data.results);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        return axios.get(this.store.apiUrl + this.store.endPoint.popularTv, this.store.options)
       },
     },
+
+
     created() {
       setTimeout(() => {
-        this.store.activeSplash = false;
-        this.getPopular();
-        this.getPopularTV();
+       this.store.activeSplash = false;
+        this.getInitial();
       }, 10000);
 
     },
@@ -105,21 +102,24 @@
 
 <style lang="scss" scoped>
 
+  .loader {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+  }
+
   //video Initial
   #splash {
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: black;
 
-    video {
-      width: 100%;
-      height: 100%;
-
-
-    }
+    
   }
 
 

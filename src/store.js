@@ -31,8 +31,9 @@ export const store = reactive({
   //variable flag
   openModalChange: false,
   activeSplash: true,
+  loader: false,
+  cardList: true,
 
 });
 
 
-//:image="store.imgUrl + movie.poster_path" serve per stampare le immagini.

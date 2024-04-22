@@ -33,9 +33,8 @@
         background-image: url(../images/BBBB.png);
         background-repeat: no-repeat;
         background-position: center;
-        background-position-y: 300px;
         background-attachment: fixed;
-        background-size: 15%;
+        background-size: 150px;
         padding: 20px;
         height: 100vh;     
         width: 100%;

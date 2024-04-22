@@ -70,6 +70,7 @@
 </script>
 
 <style lang="scss" scoped>
+
     //stars of the vote
     .stars {
         color: gold;
@@ -84,7 +85,7 @@
         z-index: 3001;
         display: flex;
         justify-content: center;
-        
+
 
 
 
@@ -94,7 +95,6 @@
             width: 80%;
             background-color: black;
             color: white;
-            border-radius: 10px;
             position: relative;
             top: 50px;
             animation: modal-comparsa 0.5s ease-in-out forwards;
@@ -122,6 +122,7 @@
                     width: 30px;
                 }
             }
+
             //the image and the info to movie or serie
             #cardInfo {
                 height: 100%;
@@ -136,12 +137,13 @@
                     width: 80%;
                     position: absolute;
                     right: 0;
+
                     #imgs {
                         position: relative;
                         height: 100%;
                         width: 100%;
 
-                       
+
 
 
 
@@ -166,6 +168,10 @@
                     width: 45%;
                     position: absolute;
                     left: 0;
+
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
 
                     #flag {
                         height: 40px;
