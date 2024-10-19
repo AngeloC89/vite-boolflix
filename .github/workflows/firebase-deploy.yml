@@ -1,10 +1,9 @@
 name: Deploy to Firebase Hosting
 
-# Questo workflow verrà eseguito quando fai push sul branch main (o master)
 on:
   push:
     branches:
-      - main  # O modifica in "master" se usi master
+      - main
 
 jobs:
   build_and_deploy:
@@ -17,15 +16,16 @@ jobs:
     - name: Install Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'  # Usa la versione di Node.js che preferisci
+        node-version: '14'
 
     - name: Install dependencies
-      run: npm install  # Installa le dipendenze necessarie
+      run: npm install
+
+    - name: Install Firebase CLI
+      run: npm install -g firebase-tools
 
     - name: Build the project
-      run: npm run build  # Esegui il comando di build del tuo progetto
+      run: npm run build
 
     - name: Deploy to Firebase Hosting
-      run: npm run deploy
-      env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
