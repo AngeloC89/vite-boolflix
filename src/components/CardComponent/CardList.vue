@@ -5,17 +5,17 @@
 
             <div class="d-flex justify-content-between align-items-center">
                 <!-- button left -->
-                <div id="left"  class="btn btn-outline-danger" @click="goScroll(-1000)">
+                <div id="left"  class="btn d-none d-lg-flex" @click="goScroll(-1000)">
                     <i class="fa-solid fa-chevron-left"></i>
                 </div>
 
-                <div id="itemId" class="d-flex p-4" ref="item">
+                <div id="itemId" class="d-flex" ref="item">
                     <div class="mx-2" v-for="(movie) in list">
                         <CardComponent :key="movie.id" :item="movie" />
                     </div>
                 </div>
                 <!-- button right -->
-                <div id="right" class="btn btn-outline-danger " @click="goScroll(1000)">
+                <div id="right" class="btn d-none d-lg-flex" @click="goScroll(1000)">
                     <i class="fa-solid fa-chevron-right" ></i>
                 </div>
             </div>
@@ -91,11 +91,11 @@ import { store } from "../../store";
     #left {
         height: 230px;
         width: 50px;
-        display: flex;
         justify-content: center;
         align-items: center;
+     
         cursor: pointer;
-        font-size: 4rem;
+        font-size: 6rem;
         position: absolute;
         z-index: 500;
 
@@ -103,11 +103,26 @@ import { store } from "../../store";
 
     #right {
         right: 0;
+      
 
 
     }
 
     #left {
         left: 0;
+        
+    }
+
+
+    @media screen and (max-width: 576px) {
+
+        h2{
+            color: red;
+            font-size: 2em;
+            text-shadow: 5px 2px 5px black;
+        }
+
+
+        
     }
 </style>

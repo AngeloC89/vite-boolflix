@@ -12,6 +12,7 @@ export const store = reactive({
     params: {
       api_key: "467cf83af1d6571088192352fc6d870a",
       query: "",
+      language: "it-IT",
     },
   },
   searchFilter: "",

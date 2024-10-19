@@ -1,11 +1,12 @@
 <template>
   <div id="splash" v-if="store.activeSplash">
-    <video src="/video/splash.mp4" autoplay muted class="BoolFlix"></video>
+    <video src="/video/splash.mp4" autoplay muted class="boolFlix"></video>
   </div>
 
   <div v-if="!store.activeSplash">
     <LoaderComponent v-if="store.loader" class="loader" />
 
+    <!-- @searchTitle="getSearch" è collegato con headerComponent con un keyup, ad ogni pressione del tasto si attiva la funzione getSearch e in contemporanea si riempie la variabile in store.js searchFilter -->
     <HeadetComponent class="position-absolute" @searchTitle="getSearch" />
 
     <MainComponent class="position-absolute" />
@@ -39,7 +40,7 @@
     methods: {
       getSearch() {
         this.store.cardList = false,
-        this.store.loader = true;
+          this.store.loader = true;
         if (this.store.searchFilter) {
           this.store.options.params.query = this.store.searchFilter;
         } else {
@@ -59,21 +60,21 @@
         });
       },
 
-       getInitial() {
-         this.store.loader = true;
-         Promise.all([
-           this.getPopular(),
-           this.getPopularTV(),
-         ]).then((res) => {
-           this.store.popular = res[0].data.results;
-           this.store.popularTV = res[1].data.results;
-         }).catch((error) => {
-           console.log(error);
-         }).finally(() => {
-           this.store.loader = false;
-         });
-       },
-//function for calling axios
+      getInitial() {
+        this.store.loader = true;
+        Promise.all([
+          this.getPopular(),
+          this.getPopularTV(),
+        ]).then((res) => {
+          this.store.popular = res[0].data.results;
+          this.store.popularTV = res[1].data.results;
+        }).catch((error) => {
+          console.log(error);
+        }).finally(() => {
+          this.store.loader = false;
+        });
+      },
+      //function for calling axios
       getMovies() {
         return axios.get(this.store.apiUrl + this.store.endPoint.movie, this.store.options)
       },
@@ -91,7 +92,7 @@
 
     created() {
       setTimeout(() => {
-       this.store.activeSplash = false;
+        this.store.activeSplash = false;
         this.getInitial();
       }, 10000);
 
@@ -119,7 +120,25 @@
     align-items: center;
     background-color: black;
 
-    
+
+  }
+
+  @media screen and (max-width: 576px) {
+    #splash {
+      
+
+
+    }
+
+    video {
+      width: 500px;
+     
+      transform: scale(2);
+   
+      /* Riduce lo spazio sotto */
+      transition: all 0.3s ease;
+    }
+
   }
 
 
