@@ -65,6 +65,7 @@ import { store } from "../../store";
         color: red;
         font-size: 4em;
         text-shadow: 10px 4px 10px black;
+        font-family: "Playfair Display", serif;
     }
 
     h4{
@@ -118,8 +119,10 @@ import { store } from "../../store";
 
         h2{
             color: red;
-            font-size: 2em;
+            font-size: 2.5em;
             text-shadow: 5px 2px 5px black;
+            margin: 10px 0px;
+            
         }
 
 

@@ -97,9 +97,9 @@
 
     @media screen and (max-width: 576px) {
         .flip-card {
-            width: 100px;
+            width: 120px;
             aspect-ratio: 1 / 1.5;
-            margin: 3px 0px;
+            margin: 23px 0px;
             position: relative;
             cursor: pointer;
             
