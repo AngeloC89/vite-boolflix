@@ -1,0 +1,31 @@
+name: Deploy to Firebase Hosting
+
+# Questo workflow verrà eseguito quando fai push sul branch main (o master)
+on:
+  push:
+    branches:
+      - main  # O modifica in "master" se usi master
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # Usa la versione di Node.js che preferisci
+
+    - name: Install dependencies
+      run: npm install  # Installa le dipendenze necessarie
+
+    - name: Build the project
+      run: npm run build  # Esegui il comando di build del tuo progetto
+
+    - name: Deploy to Firebase Hosting
+      run: npm run deploy
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
