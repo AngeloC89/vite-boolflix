@@ -110,7 +110,7 @@
         }
 
         #img {
-            height: 750px;
+            height: 606px;
             width: 1200px;
             position: relative;
             right: -263px;
