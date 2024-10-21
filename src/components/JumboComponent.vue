@@ -150,7 +150,7 @@
             #info {
                 position: absolute;
                 width: 400px;
-                height: 320px;
+                height: 300px;
                 left: 0;
                 overflow: hidden;
                 z-index: 250;
