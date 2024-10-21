@@ -1,26 +1,30 @@
 <template>
     <main>
-             <CardList :list="store.movies" :title="'Movies'"/>
-             <CardList :list="store.series" :title="'Series'"/>
-             <CardList :list="store.popular" :title="'Popular'"/>
-             <CardList :list="store.popularTV" :title="'Popular Series'"/>
+        <JumboComponent />
+        <CardList :list="store.movies" :title="'Movies'" />
+        <CardList :list="store.series" :title="'Series'" />
+        <CardList :list="store.popular" :title="'Popular'" />
+        <CardList :list="store.popularTV" :title="'Popular Series'" />
     </main>
 </template>
 
 <script>
     import CardList from './CardComponent/CardList.vue';
-    import {store} from '../store';
+    import JumbotronComponent from './JumboComponent.vue';
+    import { store } from '../store';
+    import JumboComponent from './JumboComponent.vue';
 
     export default {
         name: 'MainComponent',
         components: {
-            CardList
+            CardList,
+            JumboComponent
         },
-        data(){
-            return{
-            store,
-        }
-    },
+        data() {
+            return {
+                store,
+            }
+        },
 
     }
 </script>
@@ -35,15 +39,21 @@
         background-position: center;
         background-attachment: fixed;
         background-size: 150px;
-        padding: 20px;
-        height: 100vh;     
+        height: 100vh;
         width: 100%;
-        padding-top: 150px; 
+        padding-top: 116px;
         overflow-y: auto;
-        
+
 
     }
 
-    
+    @media screen and (max-width: 768px) {
+        main {
+            padding-top: 100px;
+        }
+
+    }
+
+
 
 </style>

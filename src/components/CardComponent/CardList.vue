@@ -63,7 +63,7 @@ import { store } from "../../store";
 
     h2{
         color: red;
-        font-size: 4em;
+        font-size: 3em;
         text-shadow: 10px 4px 10px black;
         font-family: "Playfair Display", serif;
     }
@@ -77,40 +77,38 @@ import { store } from "../../store";
     #itemId {
         overflow-y: hidden;
         overflow-x: auto;
+        margin: 30px;
 
-
-
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
     }
 
-
-    #itemId::-webkit-scrollbar {
-        display: none;
-    }
 
     #right,
     #left {
         height: 230px;
-        width: 50px;
+        width: 20px;
         justify-content: center;
         align-items: center;
      
         cursor: pointer;
-        font-size: 6rem;
+        font-size: 4rem;
         position: absolute;
         z-index: 500;
 
     }
 
     #right {
-        right: 0;
+        right: 8px;
       
 
 
     }
 
     #left {
-        left: 0;
+        left: 8px;
         
     }
 
@@ -119,11 +117,23 @@ import { store } from "../../store";
 
         h2{
             color: red;
-            font-size: 2.5em;
-            text-shadow: 5px 2px 5px black;
+            font-size: 2rem;
+            text-shadow: 3px 1px 3px black;
             margin: 10px 0px;
             
         }
+
+        #itemId {
+            overflow-y: hidden;
+            overflow-x: auto;
+            margin: 10px;
+    
+            &::-webkit-scrollbar {
+                display: none;
+            }
+    
+        }
+    
 
 
         

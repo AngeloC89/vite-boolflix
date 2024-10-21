@@ -11,7 +11,7 @@
 
     <MainComponent class="position-absolute" />
 
-    <ModalComponent />
+   
   </div>
 </template>
 
@@ -20,7 +20,6 @@
   import { store } from "./store";
   import HeadetComponent from "./components/HeaderComponent.vue";
   import MainComponent from "./components/MainComponent.vue";
-  import ModalComponent from "./components/ModalComponent.vue";
   import LoaderComponent from "./components/LoaderComponent.vue";
 
   export default {
@@ -28,7 +27,6 @@
     components: {
       HeadetComponent,
       MainComponent,
-      ModalComponent,
       LoaderComponent,
     },
 
@@ -124,12 +122,6 @@
   }
 
   @media screen and (max-width: 576px) {
-    #splash {
-      
-
-
-    }
-
     video {
       width: 500px;
      
